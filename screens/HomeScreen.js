@@ -26,7 +26,7 @@ export default function HomeScreen() {
   const [showSearch, toggleSearch] = useState(false);
   const [locations, setLocations] = useState([]);
   const [weather, setWeather] = useState([]);
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(false);
 
   const handleLocation = (loc) => {
     setLocations([]);
@@ -57,6 +57,7 @@ export default function HomeScreen() {
     let myCity = await getData("city");
     let cityName = "Amsterdam";
     if (myCity) cityName = myCity;
+    setLoading(true);
     fetchWeatherForecast({
       cityName,
       days: "14",
