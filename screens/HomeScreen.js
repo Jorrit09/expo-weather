@@ -84,66 +84,69 @@ export default function HomeScreen() {
         </View>
       ) : (
         <SafeAreaView className="flex flex-1">
-          <ScrollView showsVerticalScrollIndicator={false}
-           keyboardShouldPersistTaps="always">
-            <View style={{ height: "7%" }} className="mx-4 relative z-50">
-              <View
-                className="flex-row justify-end items-center rounded-full"
-                style={{
-                  backgroundColor: showSearch
-                    ? theme.bgWhite(0.2)
-                    : "transparent",
-                }}
-              >
-                {showSearch ? (
-                  <TextInput
-                    onChangeText={handleTextDebounce}
-                    placeholder="Search city"
-                    placeholderTextColor={"lightgray"}
-                    className="pl-6 h-10 pb-1 flex-1 text-base text-white"
-                  />
-                ) : null}
-                <TouchableOpacity
-                  onPress={() => toggleSearch(!showSearch)}
-                  style={{ backgroundColor: theme.bgWhite(0.3) }}
-                  className="rounded-full p-3 m-1"
-                >
-                  <MagnifyingGlassIcon size="25" color="white" />
-                </TouchableOpacity>
-              </View>
-              {locations.length > 0 && showSearch ? (
-                <View className="absolute w-full bg-gray-300 top-16 rounded-3xl">
-                  {locations.map((loc, index) => {
-                    let showBorder = index + 1 != locations.length;
-                    let borderClass = showBorder
-                      ? " border-b-2 border-b-gray-400"
-                      : "";
-                    return (
-                      <TouchableOpacity
-                        onPress={() => handleLocation(loc)}
-                        key={index}
-                        className={
-                          "flex-row items-center border-0 p-3 px-4 mb-1 " +
-                          borderClass
-                        }
-                      >
-                        <MapPinIcon size="20" color="gray" />
-                        <Text className="text-black text-lg ml-2">
-                          {loc?.name}, {loc?.country}
-                        </Text>
-                      </TouchableOpacity>
-                    );
-                  })}
-                </View>
-              ) : null}
-            </View>
-            <View className="mx-4 flex justify-around flex-1 mb-2 sticky top-0">
-              <Text className="text-white text-center text-2xl font-bold">
-                {location?.name},
-                <Text className="text-lg font-semibold text-gray-300">
-                  {" " + location?.country}
+          <View style={{ height: "7%" }} className="mx-4 relative">
+            <View
+              className="flex-row justify-end items-center rounded-full"
+              style={{
+                backgroundColor: showSearch
+                  ? theme.bgWhite(0.2)
+                  : "transparent",
+              }}
+            >
+              {showSearch ? (
+                <TextInput
+                  onChangeText={handleTextDebounce}
+                  placeholder="Search city"
+                  placeholderTextColor={"lightgray"}
+                  className="pl-6 h-10 pb-1 flex-1 text-base text-white"
+                />
+              ) : (
+                <Text className="text-white text-2xl font-bold mr-9">
+                  {location?.name},
+                  <Text className="text-lg font-semibold text-gray-300">
+                    {" " + location?.country}
+                  </Text>
                 </Text>
-              </Text>
+              )}
+              <TouchableOpacity
+                onPress={() => toggleSearch(!showSearch)}
+                style={{ backgroundColor: theme.bgWhite(0.3) }}
+                className="rounded-full p-3 m-1"
+              >
+                <MagnifyingGlassIcon size="25" color="white" />
+              </TouchableOpacity>
+            </View>
+            {locations.length > 0 && showSearch ? (
+              <View className="absolute w-full bg-gray-300 top-16 rounded-3xl">
+                {locations.map((loc, index) => {
+                  let showBorder = index + 1 != locations.length;
+                  let borderClass = showBorder
+                    ? " border-b-2 border-b-gray-400"
+                    : "";
+                  return (
+                    <TouchableOpacity
+                      onPress={() => handleLocation(loc)}
+                      key={index}
+                      className={
+                        "flex-row items-center border-0 p-3 px-4 mb-1 " +
+                        borderClass
+                      }
+                    >
+                      <MapPinIcon size="20" color="gray" />
+                      <Text className="text-black text-lg ml-2">
+                        {loc?.name}, {loc?.country}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            ) : null}
+          </View>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps="always"
+          >
+            <View className="mx-4 flex justify-around flex-1 mb-2 sticky top-0">
               <View className="flex-row justify-center mt-10">
                 <Image
                   source={weatherImages[current?.condition?.text]}
@@ -278,8 +281,8 @@ export default function HomeScreen() {
                 style={{ width: "43%", backgroundColor: theme.bgWhite(0.15) }}
                 className="py-3 h-32 space-x-3 justify-center rounded-3xl flex-row"
               >
-                  <EyeIcon color="white" size="19" />
-                  <Text className="text-gray-300 pt-1">VISABILITY</Text>
+                <EyeIcon color="white" size="19" />
+                <Text className="text-gray-300 pt-1">VISABILITY</Text>
                 <View className="space-x-3 absolute top-16">
                   <Text className="text-white text-xl font-semibold">
                     {current?.vis_km} km
