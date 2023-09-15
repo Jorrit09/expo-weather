@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "43f2b0f6-7e91-4f4e-bfb3-cb6dba754e80"
+      }
+    },
+    "owner": "jorrit2003"
   }
 }

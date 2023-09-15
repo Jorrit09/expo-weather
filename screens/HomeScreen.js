@@ -13,7 +13,6 @@ import {
   Bars3BottomLeftIcon,
   EyeIcon,
   MagnifyingGlassIcon,
-  SunIcon,
 } from "react-native-heroicons/outline";
 import { CalendarDaysIcon, MapPinIcon } from "react-native-heroicons/solid";
 import { useCallback, useEffect, useState } from "react";
@@ -85,7 +84,8 @@ export default function HomeScreen() {
         </View>
       ) : (
         <SafeAreaView className="flex flex-1">
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView showsVerticalScrollIndicator={false}
+           keyboardShouldPersistTaps="always">
             <View style={{ height: "7%" }} className="mx-4 relative z-50">
               <View
                 className="flex-row justify-end items-center rounded-full"
@@ -278,8 +278,8 @@ export default function HomeScreen() {
                 style={{ width: "43%", backgroundColor: theme.bgWhite(0.15) }}
                 className="py-3 h-32 space-x-3 justify-center rounded-3xl flex-row"
               >
-                <EyeIcon color="white" size="19" />
-                <Text className="text-gray-300 pt-1">VISABILITY</Text>
+                  <EyeIcon color="white" size="19" />
+                  <Text className="text-gray-300 pt-1">VISABILITY</Text>
                 <View className="space-x-3 absolute top-16">
                   <Text className="text-white text-xl font-semibold">
                     {current?.vis_km} km
