@@ -128,7 +128,7 @@ export default function HomeScreen() {
                       onPress={() => handleLocation(loc)}
                       key={index}
                       className={
-                        "flex-row items-center border-0 p-3 px-4 mb-1 " +
+                        "flex-row items-center border-0 p-3 px-4 mb-1" +
                         borderClass
                       }
                     >
@@ -146,11 +146,11 @@ export default function HomeScreen() {
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="always"
           >
-            <View className="mx-4 flex justify-around flex-1 mb-2 sticky top-0">
-              <View className="flex-row justify-center mt-10">
+            <View className="mx-4 flex justify-around flex-1 mb-2 mt-20">
+              <View className="flex-row justify-center">
                 <Image
                   source={weatherImages[current?.condition?.text]}
-                  className="w-52 h-52"
+                  className="w-52 h-52 z-0"
                 />
               </View>
               <View className="space-y-2 mt-10">
